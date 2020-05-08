@@ -1,0 +1,73 @@
+<div class="header-height border-bottom"></div>
+
+<section class="my-5 wrap-case-study" *ngIf="casestudy && casestudy.length">
+    <div class="container">
+        <h2 class="common-heading mt-3 lightRed move-up delay-0">Case Studies</h2>
+        <span class="heading-bottom-line redBg mb-5 move-left"></span>
+
+        <div class="row flex-column-reverse flex-md-row move-up delay-1 mb-4" *ngFor="let case of casestudy">
+            <div class="col-sm-4 py-3 border d-flex flex-column justify-content-center">
+               <!--  <h4 class="size-20 font-500 mb-1">{{ case.name }}</h4> -->
+                <span class="d-block size-16">Industry: <strong class="size-18">{{ case.industry.name }}</strong></span>
+                <!-- <p class="size-16 py-3 case-study-name">{{ case.detail }}</p> -->
+                <p class="size-16 py-3 case-study-name">{{ case.name }}</p>
+
+                <a *ngIf="checkPdfUser==false" href="javascript:void(0)" class="text-center blue-btn blue-round size-16" (click)="onDownloadPdf($event,'casestudy/pdf', case.pdf)" data-toggle="modal" data-target="#exampleModal">Download <i class="far fa-file-pdf ml-2"></i></a>
+
+                <a *ngIf="checkPdfUser==true" href="javascript:void(0)" class="text-center blue-btn blue-round size-16" (click)="onDownloadPdf($event,'casestudy/pdf', case.pdf)">Download <i class="far fa-file-pdf ml-2"></i></a>
+
+
+            </div>
+
+            <div class="col-sm-8 pl-md-0 overflow-hidden">
+                <a *ngIf="checkPdfUser==false" (click)="onDownloadPdf($event,'casestudy/pdf', case.pdf)" data-toggle="modal" data-target="#exampleModal">
+                    <img src="{{ serverUrl }}public/casestudy/image/{{ case.image }}" class="w-100">
+                </a>
+
+                <a *ngIf="checkPdfUser==true" (click)="onDownloadPdf($event,'casestudy/pdf', case.pdf)">
+                  <img src="{{ serverUrl }}public/casestudy/image/{{ case.image }}" class="w-100">
+              </a>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<section class="blueBg py-5 mb-5" id="whitePaper" *ngIf="whitepaper && whitepaper.length">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="common-heading mt-3 white move-up delay-0">White Papers</h2>
+                <span class="heading-bottom-line whiteBg mb-5 move-left"></span>
+            </div>
+            <div class="col-md-12" *ngFor="let whitePap of whitepaper">
+
+
+              <a href="javascript:void(0)" class="anchor-yellow-hover border-bottom white size-18 d-flex align-items-center justify-content-between mb-4 pb-3 move-up delay-1"
+               *ngIf="checkPdfUser==false"
+                (click)="onDownloadPdf($event,'whitepaper', whitePap.pdf)"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >{{ whitePap.name }} <i class="far fa-file-pdf ml-2"></i></a>
+
+
+              <a href="javascript:void(0)" class="anchor-yellow-hover border-bottom white size-18 d-flex align-items-center justify-content-between mb-4 pb-3 move-up delay-1"
+              *ngIf="checkPdfUser==true"
+               (click)="onDownloadPdf($event,'whitepaper', whitePap.pdf)"
+             >{{ whitePap.name }} <i class="far fa-file-pdf ml-2"></i></a>
+
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<app-pdf-form  [pdfurl]="downloadpdfUrl"> </app-pdf-form>
+<app-request-demo> </app-request-demo>
+
+

@@ -1,0 +1,35 @@
+
+    <!-- Start Second level Banner -->
+    <section class="second-level-banner pb-4">
+      <div class="img-wrap position-relative">
+          <img src="assets/images/news-event/banner1.jpg" alt="Merino Industries" class="w-100">
+
+      </div>
+  </section>
+
+  <div class="container wrap-breadcrumb" style="position: relative;left:inherit;top:inherit;">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Thank You</li>
+      </ol>
+  </nav>
+</div>
+  <!-- End Second level Banner -->
+
+  <div class="container pb-4 mb-4" id="PastWebinar">
+      <div class="row">
+          <div class="col-md-12 size-22 my-5 font-400">
+              Congratulations!<br> Your entry for the webinar: <strong>{{message}}</strong> has been registered.  
+          </div>
+
+          <div class="col-sm-12" *ngIf="setThankYouContent">
+
+            <p>{{ setThankYouContent.data.heading}}</p>
+            <p>{{ setThankYouContent.data.description}}</p>
+
+          </div>
+          
+
+      </div>
+  </div>

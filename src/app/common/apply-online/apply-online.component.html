@@ -1,0 +1,348 @@
+<div class="container wrap-breadcrumb">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item">
+          <a *ngIf="countrySlug" [routerLink]="['/',countrySlug,'careers.html']">Careers</a>
+          <a *ngIf="!countrySlug" [routerLink]="['/careers.html']">Careers</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Apply Online</li>
+      </ol>
+  </nav>
+</div>
+
+<!-- Start Second level Banner -->
+
+<section class="second-level-banner pb-md-5 mb-md-5">
+  <div class="img-wrap position-relative">
+    <img src="assets/images/about/career-banner.jpg" alt="" class="w-100">
+  </div>
+</section>
+<!-- End Second level Banner -->
+
+<!-- Star Why Merino? -->
+<section class="apply-container mb-5" id="applyContainer">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="common-heading lightRed">Apply Online</h2>
+        <span class="heading-bottom-line redBg mb-5"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="apply-form-container mt-3">
+    <div class="container">
+      <div class="row">
+
+        <form class="col-md-12" [formGroup]="careerForm" (ngSubmit)="onSubmitCareer()">
+          <ul class="p-0">
+            <li class="my-5">
+              <div class="applyOnline-inner-container">
+                <h4 class="size-24 font-500 lightBlack py-1 m-0 minus">Personal Details</h4>
+                <div class="row py-3 acc-block" style="display: block;">
+                  <div class="container">
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right mb-2 size-16 font-400 black">
+                        Apply For
+                      </div>
+                      <div class="col-md-6">
+                        <select formControlName="designation" class="form-control" [(ngModel)]="jobId"
+                          [ngClass]="{ 'is-invalid': (submitted || f.designation.touched ) && f.designation.errors }">
+                          <option value="">Select Designation </option>
+                          <option *ngFor="let myjob of jobs" value="{{ myjob._id }}">
+                            {{ myjob.name }} </option>
+
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right size-16 font-400 black">Name
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" formControlName="name"
+                          [ngClass]="{ 'is-invalid': (submitted || f.name.touched ) && f.name.errors }"
+                          class="form-control">
+                      </div>
+                    </div>
+
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right size-16 font-400 black">Date Of Birth
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" formControlName="birthday"
+                          [ngClass]="{ 'is-invalid': (submitted || f.name.touched ) && f.name.errors }"
+                          class="form-control">
+                          <p class="mt-1 size-14 black">Formate (dd-mm-yyyy)</p>
+                      </div>
+                    </div>
+
+
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right size-16 font-400 black">Email
+                      </div>
+                      <div class="col-md-6">
+                        <input type="email" type="email" formControlName="email"
+                          [ngClass]="{ 'is-invalid': (submitted || f.email.touched )  && f.email.errors }"
+                          class="form-control">
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right mb-2 size-16 font-400 black">Any
+                        Landline
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-4">
+                            <input type="text" formControlName="isd"
+                              [ngClass]="{ 'is-invalid': (submitted || f.isd.touched )  && f.isd.errors }"
+                              class="form-control" placeholder="ISD">
+                          </div>
+                          <div class="col-4">
+                            <input type="text" formControlName="std"
+                              [ngClass]="{ 'is-invalid': (submitted || f.std.touched )  && f.std.errors }"
+                              class="form-control" placeholder="STD">
+                          </div>
+                          <div class="col-4">
+                            <input type="number" min="0" formControlName="phoneno" (keypress)="contactkeypress($event)"
+                              [ngClass]="{ 'is-invalid': (submitted || f.phoneno.touched ) && f.phoneno.errors }"
+                              class="form-control contactv" placeholder="Phone">
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="row py-1">
+                      <div class="col-md-4 text-right"></div>
+                      <div class="col-md-6 font-500">Or</div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right mb-2 size-16 font-400 black">
+                        Mobile</div>
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-3">
+                            <input type="text" formControlName="mobileisd"
+                              [ngClass]="{ 'is-invalid': (submitted || f.mobileisd.touched )  && f.mobileisd.errors }"
+                              class="form-control" placeholder="ISD"></div>
+                          <div class="col-9">
+                            <input type="text" formControlName="mobile" (keypress)="contactkeypress($event)"
+                              [ngClass]="{ 'is-invalid': (submitted || f.mobile.touched ) && f.mobile.errors }"
+                              class="form-control contactv" maxlength="15" placeholder="Mobile">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h4 class="size-24 font-500 lightBlack py-1 mt-4 mb-4 minus">Professional Details</h4>
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right size-16 font-400 black">
+                        Professional
+                        Category</div>
+                      <div class="col-md-6">
+                        <input type="text" formControlName="professional_category"
+                          [ngClass]="{ 'is-invalid': (submitted || f.professional_category.touched )  && f.professional_category.errors }"
+                          class="form-control">
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right size-16 font-400 black">Industry
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" formControlName="industry"
+                          [ngClass]="{ 'is-invalid': (submitted || f.industry.touched )  && f.industry.errors }"
+                          class="form-control">
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right mb-2 size-16 font-400 black">
+                        Total Work
+                        Experience</div>
+
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-6">
+                            <select formControlName="work_experience_year" class="form-control"
+                              [ngClass]="{ 'is-invalid': (submitted || f.work_experience_year.touched ) && f.work_experience_year.errors }">
+                              <option value="">Year</option>
+                              <option *ngFor="let we of Arr(num).fill(1) ;  let i = index; " value="{{ i+1 }}">{{ i+1 }}
+                              </option>
+                            </select>
+                          </div>
+                          <div class="col-6">
+                            <select formControlName="work_experience_month" class="form-control"
+                              [ngClass]="{ 'is-invalid': (submitted || f.work_experience_month.touched ) && f.work_experience_month.errors }">
+                              <option value="">Month</option>
+                              <option *ngFor="let we of Arr(11).fill(1) ;  index as i; " value="{{ i }}">{{ i }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right mb-2 size-16 font-400 black">ERP
+                        Related
+                        Experience</div>
+
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-6">
+                            <select formControlName="related_experience_year" class="form-control"
+                              [ngClass]="{ 'is-invalid': (submitted || f.related_experience_year.touched ) && f.related_experience_year.errors }">
+                              <option value="">Year</option>
+                              <option *ngFor="let we of Arr(num).fill(1) ;  let i = index; " value="{{ i+1 }}">{{ i+1 }}
+                              </option>
+                            </select>
+                          </div>
+                          <div class="col-6">
+                            <select formControlName="related_experience_month" class="form-control"
+                              [ngClass]="{ 'is-invalid': (submitted || f.related_experience_month.touched ) && f.related_experience_month.errors }">
+                              <option value="">Month</option>
+                              <option *ngFor="let we of Arr(11).fill(1) ;  index as i; " value="{{ i }}">{{ i}}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right size-16 font-400 black">Current
+                        CTC</div>
+                      <div class="col-md-6">
+                        <input type="text" formControlName="ctc" class="form-control"
+                          [ngClass]="{ 'is-invalid': (submitted || f.ctc.touched ) && f.ctc.errors }">
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right mb-2 size-16 font-400 black">
+                        Highest
+                        Educational<br>Qualification</div>
+                      <div class="col-md-6">
+                        <select formControlName="qualification" class="form-control"
+                          [ngClass]="{ 'is-invalid': (submitted || f.qualification.touched ) && f.qualification.errors }">
+                          <option value=""> Select</option>
+                          <option value="Doctorate">Doctorate</option>
+                          <option value="M.Phil">M.Phil</option>
+                          <option value="Masters">Masters</option>
+                          <option value="Bachelors">Bachelors</option>
+                          <option value="Diploma">Diploma</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right mb-2 size-16 font-400 black">
+                        Title of
+                        Degree</div>
+                      <div class="col-md-6">
+                        <select formControlName="degree" class="form-control"
+                          [ngClass]="{ 'is-invalid': (submitted || f.degree.touched ) && f.degree.errors }">
+                          <option value="">Select </option>
+                          <option value="MBA">MBA</option>
+                          <option value="PGDPM">PGDPM</option>
+                          <option value="M.Com">M.Com</option>
+                          <option value="M.A">M.A</option>
+                          <option value="M.Tech">M.Tech</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right size-18 black">
+                        University/Institute</div>
+                      <div class="col-md-6">
+                        <input type="text" formControlName="university" class="form-control"
+                          [ngClass]="{ 'is-invalid': (submitted || f.university.touched ) && f.university.errors }">
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right size-18 black">Upload Resume</div>
+                      <div class="col-md-6">
+
+                        <input type="file" formControlName="resume" class="form-control p-1"
+                          [ngClass]="{ 'is-invalid': (submitted || f.resume.touched ) && f.resume.errors }" accept="application/pdf,application/msword,
+                          application/vnd.openxmlformats-officedocument.wordprocessingml.document" (change)="onFileChanged($event)">
+                        <p class="mt-1 size-14 black">(.doc/.docx/.pdf)</p>
+                      </div>
+                    </div>
+
+
+                    <input type="hidden" formControlName="validCaptcha">
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right size-18 black">
+                        Enter captcha here</div>
+                      <div class="col-md-6 position-relative wrap-captcha">
+                        <input type="text" class="form-control" formControlName="captcha"
+                          [ngClass]="{ 'is-invalid': (submitted || f.captcha.touched ) && f.captcha.errors }">
+                        <span class="captcha-text mr-4">{{ captcha }}</span>
+                        <a role="button" (click)="refCaptcha()" class="mr-4" title="Refresh Captcha"><i class="fas fa-sync"></i></a>
+                      </div>
+                    </div>
+
+                     <div class="form-group">
+                        <p class="size-12 gdpr-height mb-0 font-300">We are strongly committed to protecting the privacy of personal data
+                            which safe-guards our valuable clients, employees and other individuals. In preparation for
+                            EU's General Data Protection Regulation (GDPR) that being now enforced; we would like to
+                            verify that you are happy to continue receiving sales and marketing communication emails
+                            from the our network. By giving your consent, you will then receive relevant sales and
+                            marketing communications emails, publications, industry newsletters and invitations from us.
+                            You are also being provided with an opportunity to Opt-Out of receiving communications from
+                            us within this email. Please read our <a target="_blank" [routerLink]="['/','privacy-policy.html']">“Privacy Notice”</a>
+                            that provides further information about how we use, care and protect your personal data.
+                        </p>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-md-4 text-md-right size-18 black"> </div>
+                      <div class="col-md-6 ml-4">
+                        <input type="checkbox" required="required" formControlName="confirm" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.confirm.errors }" class="form-check-input"
+                          id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Yes I Confirm</label>
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                      <div class="col-sm-4 text-right"></div>
+                      <div class="col-sm-6">
+                        <button type="submit" class="text-uppercase text-center blue-btn">Submit</button>
+                        <button type="reset" class="text-uppercase text-center reset-btn mx-2">Reset</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- End Why Merino? -->
+
+<app-know-more> </app-know-more>
+<app-request-demo> </app-request-demo>

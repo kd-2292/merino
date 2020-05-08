@@ -1,0 +1,379 @@
+<!-- Start Home Banner -->
+<section class="home-banner">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="assets/images/Home/slide-2.jpg" alt="Marino">
+        <div class="wrap-banner-text">
+          <h2 class="gray"><b>Technology</b><br>Can Deliver its Best.</h2>
+          <h3 class="my-md-2 gray">
+            <span>
+              <a *ngIf="countrySlug" href="javascript:void(0)" [routerLink]="['/',countrySlug,'expect-beyond.html' ]">Expect Beyond </a>
+              <a *ngIf="!countrySlug" href="javascript:void(0)" [routerLink]="['/','expect-beyond.html' ]">Expect Beyond </a>
+            </span>
+          </h3>
+          <!-- <a class="mt-md-3 white font-600" href="javascript:void(0)">Know More <i
+            class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a> -->
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="assets/images/Home/slide-3.jpg" alt="Marino">
+          <div class="wrap-banner-text">
+            <h2 class="white">We are focused,<br><b>with plenty of experience.</b></h2>
+            <h3 class="my-md-2">
+              <span>
+                <a *ngIf="countrySlug" href="javascript:void(0)" [routerLink]="['/',countrySlug,'expect-beyond.html' ]">Expect Beyond </a>
+                <a *ngIf="!countrySlug" href="javascript:void(0)" [routerLink]="['/','expect-beyond.html' ]">Expect Beyond </a>
+              </span>
+            </h3>
+          <!-- <a class="mt-md-3 white font-600" href="javascript:void(0)">Know More <i
+            class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a> -->
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="assets/images/Home/slide-1.jpg" alt="Marino">
+          <div class="wrap-banner-text">
+            <h2>Boundaries<br><b>cannot stop us.</b></h2>
+            <h3 class="my-md-2">
+              <span>
+                <a *ngIf="countrySlug" href="javascript:void(0)" [routerLink]="['/',countrySlug,'expect-beyond.html' ]">Expect Beyond </a>
+                <a *ngIf="!countrySlug" href="javascript:void(0)" [routerLink]="['/','expect-beyond.html' ]">Expect Beyond </a>
+              </span></h3>
+          <!-- <a class="mt-md-3 white font-600" href="javascript:void(0)">Know More <i
+            class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Home Banner -->
+
+  <!-- Start Services -->
+  <section class="home-services my-3 my-md-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 pr-0 move-up delay-0">
+          <h2 class="common-heading lightRed mt-3 mb-0 move-up delay-0">Services</h2>
+          <span class="heading-bottom-line redBg mb-3 move-right"></span>
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+		<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+		aria-controls="v-pills-home" aria-selected="true"> Readiness </a>
+		<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" 
+		role="tab"  aria-controls="v-pills-messages" aria-selected="false">Consulting Services</a>
+		<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+		aria-controls="v-pills-profile" aria-selected="false"> Implementation Service</a>
+		<a class="nav-link" id="v-pills-settings4-tab" data-toggle="pill" href="#v-pills-settings4" role="tab" aria-controls="v-pills-settings4" aria-selected="false">Health Check</a>
+		<a class="nav-link" id="v-pills-settings1-tab" data-toggle="pill" href="#v-pills-settings1" role="tab" aria-controls="v-pills-settings1" aria-selected="false">Skill Building</a>
+		<a class="nav-link" id="v-pills-settings2-tab" data-toggle="pill" href="#v-pills-settings2" role="tab" aria-controls="v-pills-settings2" aria-selected="false">Migration/ Upgradation</a>            
+		<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" 
+		role="tab" aria-controls="v-pills-settings" aria-selected="false">Application Management Services</a>  
+		<a class="nav-link" id="v-pills-settings3-tab" data-toggle="pill" href="#v-pills-settings3" role="tab" aria-controls="v-pills-settings3" aria-selected="false">Global Delivery Center</a>
+          
+
+</div>
+          <div class="home-mobile-view">
+			<a class="nav-link" [routerLink]="['/','services','erp-readiness-health-check.html']">Readiness</a>
+			<a class="nav-link" [routerLink]="['/','services','erp-implementation-consulting.html']">Implementation Service</a>
+			<a class="nav-link" [routerLink]="['/','services','business-process-consulting.html']">Consulting Services</a>
+			<a class="nav-link" [routerLink]="['/','services','application-management.html']">Application Management Services</a>
+			<a class="nav-link" [routerLink]="['/','services','education-training.html']">Skill Building</a>
+			<a class="nav-link" [routerLink]="['/','services','migration.html']">Migration/Upgradation</a>
+			<a class="nav-link" [routerLink]="['/','services','global-delivery-center.html']">Global Delivery Center</a>
+			<a class="nav-link" [routerLink]="['/','services','health-check.html']">Health Check</a>
+          </div>
+<a href="javascript:void(0)" [routerLink]="['/services']" class="mt-2 mt-md-4 d-flex align-items-center move-up delay-2">View
+  All
+  Services <i class="fas fa-long-arrow-alt-right ml-2"></i></a>
+</div>
+<div class="col-md-8 mt-3 mt-md-0">
+  <div class="tab-content" id="v-pills-tabContent">
+    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+      <div class="wrap-tab-service d-flex blue-gradient">
+        <div class="wrap-img d-none d-md-block move-left">
+          <img src="assets/images/Home/home-services-1.jpg" alt="Marino" height="500">
+        </div>
+        <div class="service-info move-right">
+          <h3 class="move-up delay-0">The technique to a successful ERP implementation is to BEGIN systematically.</h3>
+          <p class="move-up delay-1">Businesses around the globe are investing in ERP systems
+            to
+            turbo-charge growth. ERP Readiness assessment ensures that the organization's
+            people,
+          processes and systems...</p>
+          <a href="javascript:void(0)" [routerLink]="['/','services','erp-readiness-health-check.html']" class="move-up delay-2">Read
+            More <i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+        <div class="wrap-tab-service d-flex blue-gradient">
+          <div class="wrap-img d-none d-md-block move-left">
+            <img src="assets/images/Home/home-services-2.jpg" alt="Marino" height="500">
+          </div>
+          <div class="service-info move-right">
+            <h3 class="move-up delay-0">Eradicate frequently occurring incidents with advanced
+            planning and preparation.</h3>
+            <p class="move-up delay-1">The most crucial step before implementation is choosing
+              the right software. Once you are done with the process of consulting and have
+            chosen the desired solution, it's time to implement the technology.</p>
+            <a href="javascript:void(0)" [routerLink]="['/','services','erp-implementation-consulting.html']" class="move-up delay-2">Read
+              More <i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+          <div class="wrap-tab-service d-flex blue-gradient">
+            <div class="wrap-img d-none d-md-block move-left">
+              <img src="assets/images/Home/home-services-3.jpg" alt="Marino" height="500">
+            </div>
+            <div class="service-info move-right">
+              <h3 class="move-up delay-0">The KEY must exactly FIT in the LOCK you own.</h3>
+              <p class="move-up delay-1">Consulting opens up a consumer’s mind to numerous
+                possibilities. Since the implementation of an enterprise application is a major
+                investment for any business, one can not anticipate success without the right
+                people around. There are several areas in which a consumer may feel perplexed,
+              such as, while purchasing new software, upgrading ...</p>
+              <a href="javascript:void(0)" [routerLink]="['/','services','business-process-consulting.html']" class="move-up delay-2">Read
+                More <i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" ria-labelledby="v-pills-settings-tab">
+            <div class="wrap-tab-service d-flex blue-gradient">
+              <div class="wrap-img d-none d-md-block move-left">
+                <img src="assets/images/Home/home-services-4.jpg" alt="Marino" height="500">
+              </div>
+              <div class="service-info move-right">
+                <h3 class="move-up delay-0">LEAD the BUSINESS THE WAY YOU WANT. Technology will
+                support constantly!</h3>
+                <p class="move-up delay-1">Businesses usually have a hard time resolving problems
+                  that might appear in their day-to-day operations due to lagging Enterprise
+                  applications such as ERP, EAM, CRM, and the like. Indeed, one has to be on top
+                of everything to perform better and remain competitive...</p>
+                <a href="javascript:void(0)" [routerLink]="['/','services','application-management.html']" class="move-up delay-2">Read
+                  More <i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-settings1" role="tabpanel" ria-labelledby="v-pills-settings1-tab">
+              <div class="wrap-tab-service d-flex blue-gradient">
+                <div class="wrap-img d-none d-md-block move-left">
+                  <img src="assets/images/Home/home-services-5.jpg" alt="Marino" height="500">
+                </div>
+                <div class="service-info move-right">
+                  <h3 class="move-up delay-0">The right TRAINING is key to a successful
+                  implementation.</h3>
+                  <p class="move-up delay-1">Skill-building of business employees is as essential as
+                    anything else. A successful implementation cannot be as successful unless your
+                    employees are trained enough to understand the complexities of the deployed
+                  system. To get the maximum out of an enterprise system,...</p>
+                  <a href="javascript:void(0)" [routerLink]="['/','services','education-training.html']" class="move-up delay-2">Read
+                    More <i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel" ria-labelledby="v-pills-settings2-tab">
+                <div class="wrap-tab-service d-flex blue-gradient">
+                  <div class="wrap-img d-none d-md-block move-left">
+                    <img src="assets/images/Home/home-services-6.jpg" alt="Marino" height="500">
+                  </div>
+                  <div class="service-info move-right">
+                    <h3 class="move-up delay-0">Planning is the key. When it fails, the desired progress
+                    stops.</h3>
+                    <p class="move-up delay-1">Technology continues to change now and then. What seems
+                      new today may become obsolete in the future. Considering the rising competition,
+                      it's quite likely that you, as a business, may need to change your existing
+                    business systems.</p>
+                    <a href="javascript:void(0)" [routerLink]="['/','services','migration.html']" class="move-up delay-2">Read
+                      More <i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-settings3" role="tabpanel" ria-labelledby="v-pills-settings3-tab">
+                  <div class="wrap-tab-service d-flex blue-gradient">
+                    <div class="wrap-img d-none d-md-block move-left">
+                      <img src="assets/images/Home/home-services-7.jpg" alt="Marino" height="500">
+                    </div>
+                    <div class="service-info move-right">
+                      <h3 class="move-up delay-0">GLOBAL FOOTPRINTS to serve you better.</h3>
+                      <p class="move-up delay-1">With the world getting smaller, businesses are
+                        organically growing across geographical boundaries. Going global comes with the
+                        struggle of managing the exhausting range of processes and systems that exist
+                      across different geographies and business units.</p>
+                      <a href="javascript:void(0)" [routerLink]="['/','services','global-delivery-center.html']" class="move-up delay-2">Read
+                        More <i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                   <div class="tab-pane fade" id="v-pills-settings4" role="tabpanel" ria-labelledby="v-pills-settings4-tab">
+                  <div class="wrap-tab-service d-flex blue-gradient">
+                    <div class="wrap-img d-none d-md-block move-left">
+                      <img src="assets/images/Home/home-health-check.jpg" alt="Marino" height="500">
+                    </div>
+                    <div class="service-info move-right">
+                      <h3 class="move-up delay-0">Use your Enterprise system to its full potential.</h3>
+                      <p class="move-up delay-1">Knowing the maturity level and health of the system that operates your business is crucial.</p>
+                      <a href="javascript:void(0)" [routerLink]="['/','services','health-check.html']" class="move-up delay-2">Read
+                        More <i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- End Services -->
+
+        <!-- Start Industries -->
+        <section class="home-industries py-3 py-md-5">
+          <div class="container">
+            <h2 class="common-heading white m-0 move-up delay-1">Industries We Serve</h2>
+            <span class="heading-bottom-line whiteBg move-right mb-3 mb-md-4 mb-lg-5 d-block"></span>
+            <div class="row">
+              <div class="col-md-6 mb-4 move-up delay-2">
+                <div class="img-wrap">
+                  <a href="javascript:void(0)" [routerLink]="['/','industries','aerospace-defense.html']">
+                    <img src="assets/images/Home/aerospace.jpg" class="w-100 transition-custom" alt="Merino Industries"></a>
+                    <a href="javascript:void(0)" [routerLink]="['/','industries','aerospace-defense.html']">Aerospace & Defence</a>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4 move-up delay-3">
+                  <div class="img-wrap">
+                    <a href="javascript:void(0)" [routerLink]="['/','industries','automotive.html']">
+                      <img src="assets/images/Home/automotive.jpg" class="w-100 transition-custom" alt="Merino Industries"></a>
+                      <a href="javascript:void(0)" [routerLink]="['/','industries','automotive.html']">Automotive</a>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4 move-up delay-4">
+                    <div class="img-wrap">
+                      <a href="javascript:void(0)" [routerLink]="['/','industries','distribution.html']">
+                        <img src="assets/images/Home/distribution.jpg" class="w-100 transition-custom" alt="Merino Industries"></a>
+                        <a href="javascript:void(0)" [routerLink]="['/','industries','distribution.html']">Distribution</a>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4 move-up delay-5">
+                      <div class="img-wrap">
+                        <a href="javascript:void(0)" [routerLink]="['/','industries','hitech-electronics.html']">
+                          <img src="assets/images/Home/hi-tech-electronics.jpg" class="w-100 transition-custom"
+                          alt="Merino Industries"></a>
+                          <a href="javascript:void(0)" [routerLink]="['/','industries','hitech-electronics.html']">Hi-Tech Electronics</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-center d-flex align-items-center justify-content-center">
+                      <a href="javascript:void(0)" [routerLink]="['/industries']" class="text-uppercase white anchor-link">View All <i
+                        class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+                      </div>
+                    </div>
+                  </section>
+                  <!-- End Industries -->
+
+
+
+
+                  <!-- Start Upcoming webinar -->
+                  <section class="upcoming-webinar my-5" *ngIf="webinarTtile">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="img-wrap dynamic-webinar-banner">
+                            <img src="{{ serverUrl}}webinar/{{ webinarBanner }}" alt="Merino Upcoming Webinar" class="w-100">
+                          </div>
+                        </div>
+                        <div class="col-md-6 d-flex flex-column justify-content-lg-center px-3 px-lg-5">
+                          <h2 class="common-heading mt-3 lightRed move-up delay-1">Upcoming Webinar</h2>
+                          <span class="heading-bottom-line redBg mb-3 move-left"></span>
+                          <h4 class="move-up delay-2">{{webinarTtile}}</h4>
+                          <p class=" move-up delay-3">Date: <span>{{ webinarDate | date:'EE, dd MMM yyyy'}}</span></p>
+                          <p class=" move-up delay-4">Time: {{  webinarStarTime }} - {{  webinarEndTime }} {{  webinarTimeZone }}</p>
+
+                          <div *ngIf="!countrySlug" class="webinar-tab-btn mt-5">
+                            <a [routerLink]="['/','webinar', webinarSlug]" class="text-uppercase blue-btn blue-round">Register Now<i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+                          </div>
+
+                          <div *ngIf="countrySlug" class="webinar-tab-btn mt-5">
+                            <a [routerLink]="['/',countrySlug,'webinar', webinarSlug]"  class="text-uppercase blue-btn blue-round">Register
+                              Now<i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                    <!-- End Upcoming webinar -->
+
+
+                    <!-- Start What Our Client Says -->
+                    <section class="upcoming-webinar client-says py-md-5">
+                      <div class="container-fluid">
+                        <div class="row flex-column-reverse flex-md-row">
+                          <div class="col-md-6 d-flex flex-column justify-content-md-center px-3 px-lg-5">
+                            <h2 class="common-heading lightRed move-up delay-1">What Our Clients Say</h2>
+                            <span class="heading-bottom-line redBg mb-3 move-left"></span>
+                            <h5 class="move-up delay-2">Merino Services Became a part of the growth story of Merino panel
+                            products</h5>
+                            <p class="move-up delay-3">Merino Group, a 60 year old diversified business has many feathers in
+                              their cap. Know how Merino Panel Products used Infor ERP solutions which resulted in sales
+                            growth at exceptional level.</p>
+                            <a href="clients.html#testimonial" class="anchor-italic text-capitalize move-up delay-4">Managing Director, Merino
+                            Panel Products</a>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="img-wrap move-left">
+                              <iframe class="w-100" height="315" src="https://www.youtube.com/embed/8L7FawO64wg" frameborder="0"
+                              allowfullscreen></iframe>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                    <!-- End What Our Client Says -->
+
+                    <!-- Start Our Clients section -->
+                    <section class="our-client d-none d-lg-block pb-5 move-up delay-1" style="display:none!important">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h2 class="common-heading mt-3 lightRed pl-5 move-up delay-1">Clients</h2>
+                            <span class="heading-bottom-line redBg mb-5 move-right"></span>
+                            <ul class="m-0 p-0 d-flex align-items-center justify-content-between">
+                              <li>
+                                <div class="img-wrap"><img src="assets/images/Home/metito-logo.jpg" alt="Merino Client"></div>
+                              </li>
+                              <li>
+                                <div class="img-wrap"><img src="assets/images/Home/pan-logo.jpg" alt="Merino Client"></div>
+                              </li>
+                              <li>
+                                <div class="img-wrap"><img src="assets/images/Home/hassans-logo.jpg" alt="Merino Client"></div>
+                              </li>
+                              <li>
+                                <div class="img-wrap"><img src="assets/images/Home/paharpur-logo.jpg" alt="Merino Client"></div>
+                              </li>
+                              <li>
+                                <div class="img-wrap"><img src="assets/images/Home/kent-logo.jpg" alt="Merino Client"></div>
+                              </li>
+                              <li>
+                                <div class="img-wrap"><img src="assets/images/Home/emmbros-logo.jpg" alt="Merino Client"></div>
+                              </li>
+                              <li>
+                                <div class="img-wrap"><img src="assets/images/Home/ruby-logo.jpg" alt="Merino Client"></div>
+                              </li>
+                              <li>
+                                <div class="img-wrap"><img src="assets/images/Home/jcbl-logo.jpg" alt="Merino Client"></div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                    <!-- End Our Clients section -->
+
+
+
+
+                    <app-request-demo> </app-request-demo>

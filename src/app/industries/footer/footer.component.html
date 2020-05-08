@@ -1,0 +1,151 @@
+<section class="industry-service mt-5 py-5" id="services" *ngIf="serviceList && serviceList.length">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="common-heading white move-up delay-0">Services </h3>
+                <span class="heading-bottom-line whiteBg mb-5 move-right"></span>
+                <ul>
+                    <li class="move-up delay-1 mb-5" *ngFor="let serviceVal of serviceList">
+
+                        <a *ngIf="countrySlug" [routerLink]="['/',countrySlug,'services',serviceVal.slug ]">
+                            <div class="img-wrap"><img src="{{ serverUrl }}public/service/image/{{ serviceVal.image }}" alt="{{ serviceVal.name }}"></div>
+                            <span>{{ serviceVal.name }}</span>
+                        </a>
+
+                        <a *ngIf="!countrySlug" [routerLink]="['/','services',serviceVal.slug ]">
+                          <div class="img-wrap"><img src="{{ serverUrl }}public/service/image/{{ serviceVal.image }}" alt="{{ serviceVal.name }}"></div>
+                          <span>{{ serviceVal.name }}</span>
+                      </a>
+
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="industry-software py-5" id="software" *ngIf="softwareList && softwareList.length">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="common-heading lightRed move-up delay-0">Software</h3>
+                <span class="heading-bottom-line redBg mb-5 move-right"></span>
+            </div>
+
+            <div class="col-md-6 move-up delay-1" *ngFor="let softwareListVal of softwareList">
+              <a *ngIf="countrySlug" [routerLink]="['/',countrySlug,'applications', softwareListVal.slug ]" class="white-btn">{{ softwareListVal.name }}</a>
+
+              <a  *ngIf="!countrySlug" [routerLink]="['/','applications', softwareListVal.slug ]" class="white-btn">{{ softwareListVal.name }}</a>
+
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<!-- Start Upcoming webinar -->
+<section class="upcoming-webinar my-5" *ngIf="webinarTtile">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="img-wrap dynamic-webinar-banner">
+          <img src="{{ serverUrl}}webinar/{{ webinarBanner }}" alt="Merino Upcoming Webinar" class="w-100">
+      </div>
+  </div>
+  <div class="col-md-6 d-flex flex-column justify-content-lg-center px-3 px-lg-5">
+    <h2 class="common-heading mt-3 lightRed move-up delay-1">Upcoming Webinar</h2>
+    <span class="heading-bottom-line redBg mb-3 move-left"></span>
+    <h4 class="move-up delay-2">{{webinarTtile}}</h4>
+    <p class=" move-up delay-3">Date: <span>{{ webinarDate | date:'EE, dd MMM yyyy'}}</span></p>
+    <p class=" move-up delay-4">Time: {{  webinarStarTime }} - {{  webinarEndTime }} {{  webinarTimeZone }}</p>
+    <div *ngIf="!countrySlug" class="webinar-tab-btn mt-5">
+        <a [routerLink]="['/','webinar', webinarSlug]" class="text-uppercase blue-btn blue-round">Register Now<i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+    </div>
+
+    <div *ngIf="countrySlug" class="webinar-tab-btn mt-5">
+        <a [routerLink]="['/',countrySlug,'webinar', webinarSlug]"  class="text-uppercase blue-btn blue-round">Register
+          Now<i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+      </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- End Upcoming webinar -->
+
+<!-- Start Case Study -->
+<section *ngIf="casestudy_industry" class="home-services industry-case grayBg mt-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column justify-content-md-center px-3 px-lg-5 py-3 py-md-0">
+                <span class="move-up delay-0">Case Study</span>
+                <h2 class="common-heading mt-2 mb-0 move-up delay-1">{{casestudy_industry}}</h2>
+                <p class="size-18 py-3 move-up delay-2">{{ casestudy_detail }}</p>
+
+                <div class="webinar-tab-btn mt-2" *ngIf="checkPdfUser==false">
+                    <a href="javascript:void(0)" class="text-uppercase blue-btn blue-round" data-toggle="modal" data-target="#exampleModal" (click)="onDownloadPdf($event,'casestudy/pdf', casestudy_pdf)" >READ CASE STUDY <i class="fas fa-long-arrow-alt-right ml-2"></i></a>
+                </div>
+                <div class="webinar-tab-btn mt-2" *ngIf="checkPdfUser==true" >
+                    <a href="javascript:void(0)" class="text-uppercase blue-btn blue-round" (click)="onDownloadPdf($event,'casestudy/pdf', casestudy_pdf)">READ CASE STUDY <i class="fas fa-long-arrow-alt-right ml-2"></i></a>
+                </div>
+
+
+
+            </div>
+            <div class="col-md-6 p-0 move-left">
+                <div class="wrap-img">
+                    <img src="{{serverUrl}}public/casestudy/image/{{casestudy_banner}}" alt="Marino" class="w-100">
+                    <!-- src="{{ serverUrl}}casestudy/image/{{ casestudy_banner }}" -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Case Study -->
+<!--
+<section class="our-client d-none d-lg-block py-5 move-up delay-1" id="clients" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="common-heading mt-3 lightRed pl-5 move-up delay-0">Clients</h2>
+                <span class="heading-bottom-line redBg mb-5 move-right"></span>
+                <ul class="m-0 p-0 d-flex align-items-center justify-content-between">
+                    <li>
+                        <div class="img-wrap"><img src="assets/images/Home/metito-logo.jpg" alt="Merino Client">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-wrap"><img src="assets/images/Home/pan-logo.jpg" alt="Merino Client">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-wrap"><img src="assets/images/Home/hassans-logo.jpg" alt="Merino Client">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-wrap"><img src="assets/images/Home/paharpur-logo.jpg"
+                            alt="Merino Client"></div>
+                        </li>
+                        <li>
+                            <div class="img-wrap"><img src="assets/images/Home/kent-logo.jpg" alt="Merino Client">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-wrap"><img src="assets/images/Home/emmbros-logo.jpg" alt="Merino Client">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-wrap"><img src="assets/images/Home/ruby-logo.jpg" alt="Merino Client">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-wrap"><img src="assets/images/Home/jcbl-logo.jpg" alt="Merino Client">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+ -->
+
+    <app-pdf-form  [pdfurl]="downloadpdfUrl"> </app-pdf-form>

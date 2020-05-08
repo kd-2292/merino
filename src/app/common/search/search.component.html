@@ -1,0 +1,182 @@
+<div class="header-height border-bottom"></div>
+<!-- End Second level Banner -->
+<section class="contact-location pt-3 pt-md-0 pb-5 mt-3 move-up delay-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="mb-5 text-center size-30">You Searched for: <span class="lightRed">"{{ query }}"</span></h2>
+      </div>
+    </div>
+    <div class="col-md-12 wrap-search-results">
+      <!-- <li *ngFor="let mysearch of searchData">{{  mysearch.name }} </li> -->
+      <!-- <h3 class="mb-3">You searched: {{ query }}</h3> -->
+          <div *ngIf="searchData && searchData.length; else notfound">
+        <div *ngFor="let mysearch of searchData">
+          <ul [ngSwitch]="mysearch.type">
+
+
+            <li *ngSwitchCase="'software'">
+              <a *ngIf="countrySlug" [routerLink]="['/',countrySlug,'applications',mysearch.slug ]">
+                <i class="fas fa-long-arrow-alt-right"></i>
+                {{  mysearch.name }} </a>
+              <a *ngIf="!countrySlug" [routerLink]="['/','applications',mysearch.slug ]">
+                <i class="fas fa-long-arrow-alt-right"></i>
+                {{  mysearch.name }} </a>
+
+                <p>{{ mysearch.meta_description }}</p>
+
+            </li>
+            <li *ngSwitchCase="'service'">
+              <a *ngIf="countrySlug" [routerLink]="['/',countrySlug,'services',mysearch.slug ]">
+                <i class="fas fa-long-arrow-alt-right"></i>
+                {{  mysearch.name }} </a>
+              <a *ngIf="!countrySlug" [routerLink]="['/','services',mysearch.slug ]">
+                <i class="fas fa-long-arrow-alt-right"></i>
+                {{  mysearch.name }} </a>
+                 <p>{{ mysearch.meta_description }}</p>
+            </li>
+            <li *ngSwitchCase="'industry'">
+              <a *ngIf="countrySlug" [routerLink]="['/',countrySlug,'industries',mysearch.slug ]">
+                <i class="fas fa-long-arrow-alt-right"></i>
+                {{  mysearch.name }} </a>
+              <a *ngIf="!countrySlug" [routerLink]="['/','industries',mysearch.slug ]">
+                <i class="fas fa-long-arrow-alt-right"></i>
+                {{  mysearch.name }} </a>
+                 <p>{{ mysearch.meta_description }}</p>
+            </li>
+            <li *ngSwitchCase="'brochure'">
+              <a *ngIf="countrySlug" [routerLink]="['/resources',countrySlug,'brochure.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>
+                {{  mysearch.name }} </a>
+              <a *ngIf="!countrySlug" [routerLink]="['/resources','brochure.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>
+                {{  mysearch.name }} </a>
+                 <p>{{ mysearch.meta_description }}</p>
+            </li>
+
+            <li *ngSwitchCase="'career'">
+              <!-- <a href=""><i class="fas fa-long-arrow-alt-right"></i> {{ mysearch.name }} </a> -->
+
+              <a *ngIf="countrySlug" [routerLink]="[countrySlug,'careers.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }} </a>
+              <a *ngIf="!countrySlug" [routerLink]="['/careers.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+                 <p>{{ mysearch.meta_description }}</p>
+            </li>
+
+
+            <li *ngSwitchCase="'casestudy'">
+              <!-- <a href=""><i class="fas fa-long-arrow-alt-right"></i> {{ mysearch.name }} </a> -->
+
+              <a *ngIf="countrySlug" [routerLink]="['/resources',countrySlug,'casestudy.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+              <a *ngIf="!countrySlug" [routerLink]="['/resources/casestudy.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+                 <p>{{ mysearch.meta_description }}</p>
+
+
+            </li>
+
+            <li *ngSwitchCase="'presentation'">
+              <a *ngIf="countrySlug" [routerLink]="['/resources',countrySlug,'presentations.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+              <a *ngIf="!countrySlug" [routerLink]="['/resources/presentations.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+                 <p>{{ mysearch.meta_description }}</p>
+
+
+            </li>
+
+            <li *ngSwitchCase="'webinar'">
+              <!-- <a href=""><i class="fas fa-long-arrow-alt-right"></i> {{ mysearch.name }} </a> -->
+
+              <a *ngIf="countrySlug" [routerLink]="['/',countrySlug,'webinar', mysearch.slug]">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+
+              <a *ngIf="!countrySlug" [routerLink]="['/','webinar', mysearch.slug]">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+                 <p>{{ mysearch.meta_description }}</p>
+
+            </li>
+
+            <li *ngSwitchCase="'whitepaper'">
+              <a *ngIf="countrySlug" [routerLink]="['/resources',countrySlug,'casestudy.html']" fragment="whitePaper">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+
+              <a *ngIf="!countrySlug" [routerLink]="['/resources/casestudy.html']" fragment="whitePaper">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+                 <p>{{ mysearch.meta_description }}</p>
+            </li>
+
+
+            <li *ngSwitchCase="'company'">
+              <a *ngIf="countrySlug" [routerLink]="[countrySlug,'about-us.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+
+              <a *ngIf="!countrySlug" [routerLink]="['/about-us.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+                 <p>{{ mysearch.meta_description }}</p>
+            </li>
+
+            <li *ngSwitchCase="'chairman'">
+              <a *ngIf="countrySlug" [routerLink]="[countrySlug,'director-message.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+
+              <a *ngIf="!countrySlug" [routerLink]="['/director-message.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+                 <p>{{ mysearch.meta_description }}</p>
+            </li>
+            
+            <li *ngSwitchCase="'global-presence'">
+              <a *ngIf="countrySlug" [routerLink]="[countrySlug,'global-presence.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+
+              <a *ngIf="!countrySlug" [routerLink]="['/global-presence.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+               <p>{{ mysearch.meta_description }}</p>
+            </li>
+
+            <li *ngSwitchCase="'alliance'">
+              <a *ngIf="countrySlug" [routerLink]="[countrySlug,'alliances', mysearch.slug]">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+
+              <a *ngIf="!countrySlug" [routerLink]="['/alliances', mysearch.slug]">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+                 <p>{{ mysearch.meta_description }}</p>
+            </li>
+
+            <li *ngSwitchCase="'contactus'">
+              <a *ngIf="countrySlug" [routerLink]="[countrySlug,'contact-us.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+
+              <a *ngIf="!countrySlug" [routerLink]="['/contact-us.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+                 <p>{{ mysearch.meta_description }}</p>
+            </li>
+
+            <li *ngSwitchCase="'client'">
+              <a *ngIf="countrySlug" [routerLink]="[countrySlug,'client.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+
+              <a *ngIf="!countrySlug" [routerLink]="['/client.html']">
+                <i class="fas fa-long-arrow-alt-right"></i>{{  mysearch.name }}</a>
+                 <p>{{ mysearch.meta_description }}</p>
+            </li>
+
+
+
+
+          </ul>
+        </div>
+
+      </div>
+      <ng-template #notfound>
+          <p>
+              Oops! Record not found
+          </p>
+        </ng-template>
+    </div>
+  </div>
+</section>
+
+<ngx-spinner></ngx-spinner>

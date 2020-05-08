@@ -1,0 +1,45 @@
+
+<div class="container wrap-breadcrumb">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="['/blog.html' ]">Blog</a></li>
+          <li class="breadcrumb-item active" aria-current="page"> {{ blogDetail.data.title }}</li>
+      </ol>
+  </nav>
+</div>
+
+<div class="header-height border-bottom"></div>
+
+<section class="my-5 ">
+    <div class="container">
+        <h2 class="common-heading mt-3 lightRed move-up delay-0">Blog</h2>
+        <span class="heading-bottom-line redBg mb-5 move-left"></span>
+
+        <div *ngIf="blogDetail">
+
+        <div class="row mb-3">
+          <div class="col-sm-12">
+          	<p>
+              <img src="{{imagePath}}blog/image/{{ blogDetail.data.image }}" alt="Merino Industries" class="w-100">
+            </p>
+
+           <h3 class="size-24 mt-3 blue"> {{ blogDetail.data.title }}</h3>
+
+          <!--	<h3 class="size-24 mt-3 blue">{{ blogDetail.data.service_industry }}</h3>-->
+            <p class="mt-0 lightRed">{{ blogDetail.data.created_at  | date }}</p>
+
+            <div [innerHTML]="blogDetail.data.description"> </div>
+
+          	<!-- <div class="col-md-12 mb-2"><i  class="fas fa-arrow-right mt-1 mr-2 lightRed"></i> Vestibulum lacinia tempor velit, sit amet pharetra massa viverra quis. </div>
+          	<div class="col-md-12 mb-2"><i  class="fas fa-arrow-right mt-1 mr-2 lightRed"></i>Nunc tortor augue, suscipit congue velit sed, aliquam feugiat turpis. </div>
+          	<div class="col-md-12 mb-2"><i  class="fas fa-arrow-right mt-1 mr-2 lightRed"></i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis nisl sed aliquet faucibus.  </div>
+          	<div class="col-md-12 mb-2"><i  class="fas fa-arrow-right mt-1 mr-2 lightRed"></i>Vivamus in elit massa. Interdum et malesuada fames ac ante ipsum primis in faucibus.  </div> -->
+
+          </div>
+        </div>
+
+    </div>
+
+    </div>
+</section>

@@ -1,0 +1,122 @@
+<div class="container wrap-breadcrumb">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+      </ol>
+  </nav>
+</div>
+<!-- Start Second level Banner -->
+<div [innerHTML]="contactDetail"></div>
+
+<!-- Start query form -->
+<section class="wrap-contact-form industry-software other-industry py-5 move-up delay-5">
+  <div class="container">
+      <h2 class="common-heading text-center mt-3 lightRed mb-5">Send a Query</h2>
+      <form [formGroup]="sendQueryForm" (ngSubmit)="onSubmitContact()">
+          
+        <div class="form-group">
+              <input type="text" formControlName="name"
+              [ngClass]="{ 'is-invalid': (submitted || f.name.touched ) && f.name.errors }" class="form-control" placeholder="Name">
+          
+            <div *ngIf="(submitted || f.name.touched) && f.name.errors" class="text-danger">
+                <span *ngIf="f.name.errors.required">Name is required</span>
+            </div>
+        </div>
+
+          <div class="form-group">
+              <input type="email"  formControlName="email"
+              [ngClass]="{ 'is-invalid': (submitted || f.email.touched )  && f.email.errors }" class="form-control" placeholder="Email">
+              
+              <div *ngIf="(submitted || f.email.touched) && f.email.errors" class="text-danger">
+                <span *ngIf="f.email.errors.required">Email is required</span>
+                <span *ngIf="f.email.errors.email">Email is not valid</span>
+            </div>
+          
+            </div>
+
+          <div class="form-group">
+              <input type="number" class="form-control" min="0"  maxlength="15" placeholder="Contact Number" formControlName="contact"
+              (keypress)="contactkeypress($event)"
+              [ngClass]="{ 'is-invalid': (submitted || f.contact.touched ) && f.contact.errors }">
+          
+              <div *ngIf="(submitted || f.contact.touched) && f.contact.errors" class="text-danger">
+                <span *ngIf="f.contact.errors.required">Contact is required</span>
+            </div>
+            </div>
+
+          <div class="form-group">
+              <input type="text" formControlName="company"
+              [ngClass]="{ 'is-invalid': (submitted || f.company.touched ) && f.company.errors }" class="form-control" placeholder="Company">
+          
+              <div *ngIf="(submitted || f.company.touched) && f.company.errors" class="text-danger">
+                <span *ngIf="f.company.errors.required">Company is required</span>
+            </div>
+            </div>
+
+          <div class="form-group">
+              <select class="w-100 form-control" formControlName="country"
+              [ngClass]="{ 'is-invalid': (submitted || f.country.touched ) && f.country.errors }" >
+                  <option value="">Select Country</option>
+                  <option *ngFor="let countryName of countryList" [value]="countryName.name"> {{ countryName.name }} </option>
+              </select>
+
+              <div *ngIf="(submitted || f.country.touched) && f.country.errors" class="text-danger">
+                <span *ngIf="f.country.errors.required">Country is required</span>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+              <textarea class="form-control" formControlName="message"
+              [ngClass]="{ 'is-invalid': (submitted || f.message.touched ) && f.message.errors }" placeholder="Query" maxlength="100" rows="3"></textarea>
+
+              <div *ngIf="(submitted || f.message.touched) && f.message.errors" class="text-danger">
+                <span *ngIf="f.message.errors.required">Query is required</span>
+            </div>
+            </div>
+
+          <input type="hidden" formControlName="validCaptcha">
+
+          <div class="form-group position-relative wrap-captcha">
+            <input type="text" class="form-control" placeholder="Enter captcha here"
+            formControlName="captcha"
+            [ngClass]="{ 'is-invalid': (submitted || f.captcha.touched ) && f.captcha.errors }">
+
+            <span class="captcha-text">{{ captcha }}</span>
+            <a role="button" (click)="refCaptcha()" title="Refresh Captcha"><i class="fas fa-sync"></i></a>
+        </div>
+
+        <div class="form-group">
+            <strong class="size-12">We are strongly committed to protecting the privacy of personal data which safe-guards our valuable clients, employees and other individuals. In preparation for EU's General Data Protection Regulation (GDPR) that is being now enforced; we would like to verify that you are happy to continue receiving sales and marketing communication emails from our network. By giving your consent, you will then receive relevant sales and marketing communications emails, publications, industry newsletters and invitations from us. You are also being provided with an opportunity to Opt-Out of receiving communications from us within this email. Please read our <a [routerLink]="['/','privacy-policy.html']" target="_blank" class="p-0 m-0 size-12 d-inline-block">“Privacy Notice”</a> that provides further information about how we use, care and protect your personal data. </strong>
+        </div>
+
+        <div class="form-check">
+            <input required="required" type="checkbox" formControlName="confirm" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.confirm.errors }" class="form-check-input"
+                id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Yes I Confirm</label>
+            <!-- <span *ngIf="submitted && f.confirm.errors" class="invalid-feedback">
+                <span *ngIf="f.confirm.errors.required">Please checked 'Yes I Confirm'</span>
+            </span> -->
+        </div>
+
+
+
+        <div class="form-group g-recaptcha" data-sitekey="6LcxJ20UAAAAADk7NpEVOmcqCerLBXV1O3XLjtfG">
+        </div>
+        <!-- <button type="submit" class="form-submit blue-btn blue-round size-20 px-4 py-2 text-uppercase">Submit</button> -->
+
+        <button type="submit" class="text-uppercase red-btn px-4 py-2 size-16">Submit</button>
+
+
+      </form>
+  </div>
+</section>
+<!-- End send query -->
+
+
+<app-about-footer></app-about-footer>
+
+
+<app-request-demo> </app-request-demo>

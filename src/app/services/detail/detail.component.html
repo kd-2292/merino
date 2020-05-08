@@ -1,0 +1,40 @@
+<div class="container wrap-breadcrumb" *ngIf="detail">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item">
+         	<a *ngIf="countrySlug" [routerLink]="['/',countrySlug,'services/all-services.html']">Services</a>
+         	<a *ngIf="!countrySlug" [routerLink]="['/services/all-services.html']">Services</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page" *ngIf="bradname">{{ bradname }}</li>
+      </ol>
+  </nav>
+</div>
+
+
+<div  *ngIf="detail">
+<div [innerHTML]="detail"></div>
+
+<div *ngIf="checkSchema !='null'">
+    <div [innerHTML]="schema"></div>
+</div>
+
+<app-footer [parenkeyid]="pagekey"></app-footer>
+<app-request-demo> </app-request-demo>
+</div>
+
+
+<div  *ngIf="!detail && getRecord">
+<div class="header-height border-bottom"></div>
+<section>
+    <div class="container my-5 pb-5">
+        <h2 class="common-heading red text-center mb-4">Oops... <span _ngcontent-upa-c3="" class="lightRed">
+            The page is no longer here</span></h2>
+        <div class="text-center mb-5"><a href="/" class="text-uppercase text-center blue-btn blue-round">
+            Take Me Home</a></div>
+        <div class="img-wrap text-center">
+            <img src="assets/images/404.png" alt="Merino page not found" class="w-100">
+        </div>
+    </div>
+</section>
+</div>

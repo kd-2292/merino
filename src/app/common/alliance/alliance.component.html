@@ -1,0 +1,51 @@
+<div class="container wrap-breadcrumb">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Alliances</li>
+      </ol>
+  </nav>
+</div>
+<!-- Start Second level Banner -->
+<section class="second-level-banner mb-md-5">
+    <div class="img-wrap position-relative">
+        <img src="assets/images/alliances/banner.jpg" alt="Merino Industries" class="w-100">
+    </div>
+</section>
+<!-- End Second level Banner -->
+
+<!-- Star Alliances -->
+<section class="alliances-container" id="alliancesContainer" *ngIf="list && list.length">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="common-heading mt-5 lightRed">Alliances</h3>
+                <span class="heading-bottom-line redBg mb-5"></span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-sm-12">
+                <ul class="p-0">
+       <li *ngFor="let listData of list">
+
+          <a *ngIf="countrySlug" [routerLink]="[countrySlug,'/alliances',listData.slug]" >
+            <img src="{{ serverUrl}}alliance/image/{{ listData.image }}" alt="{{ listData.name }}"></a>
+
+         <a *ngIf="!countrySlug"  [routerLink]="['/alliances', listData.slug]" >
+           <img src="{{ serverUrl}}alliance/image/{{ listData.image }}" alt="{{ listData.name }}"></a>
+
+        </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+<!-- End Alliances -->
+
+<app-know-more [hideOption]="'alliances'"> </app-know-more>
+<app-request-demo> </app-request-demo>

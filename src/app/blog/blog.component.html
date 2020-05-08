@@ -1,0 +1,81 @@
+<!--
+<div class="container wrap-breadcrumb">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item">
+         	<a  [routerLink]="['/blog.html']">Blogs</a>
+         	<a  [routerLink]="['/blog-list.html']">blogs-list</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">brand name</li>
+      </ol>
+  </nav>
+</div>
+
+
+<div>
+  contect area fsa
+</div>
+
+ -->
+<div class="container wrap-breadcrumb">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Blog</li>
+      </ol>
+  </nav>
+</div>
+
+<div class="header-height border-bottom"></div>
+
+<section class="my-5">
+    <div class="container">
+        <h2 class="common-heading mt-3 lightRed move-up delay-0">Blog</h2>
+        <span class="heading-bottom-line redBg mb-5 move-left"></span>
+
+
+        <ng-template [ngIf]="blogData">
+
+        <div *ngFor="let blog of blogData.data; index as i">
+
+        <div class="row mb-3">
+
+          <div class="col-sm-6 pl-md-0 overflow-hidden">
+            <img src="{{imagePath}}blog/image/{{ blog.image }}" alt="Merino Industries" class="w-100">
+          </div>
+
+          <div class="col-sm-6">
+            {{ blog.service_industry }}
+
+            <h5>
+              <a [routerLink]="['/blog', blog.slug ]" class="blue">{{ blog.title }}</a>
+              <br/>
+            </h5>
+            <span class="lightRed size-14">{{ blog.created_at  | date:'EE, dd MMM yyyy' }}</span>
+
+            <div [innerHTML]="(blog.description | slice:0:183)+'...'"></div>
+
+            <p class="m">
+              <a [routerLink]="['/blog', blog.slug]" class="text-center blue size-14  d-inline-block ang-menu">Read more</a>
+            </p>
+          </div>
+
+        </div>
+
+         <!-- <div class="row mb-3">
+          <div class="col-sm-5 overflow-hidden"><img src="assets/images/blog/2.jpg" alt="Merino Industries" class="w-100"></div>
+          <div class="col-sm-7">
+            Aerospace & Defence
+            <h5><a href="#">Lorem ipsum dolor sit amet</a><br/></h5><span >November 10, 2019</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis nisl sed aliquet faucibus. Duis fermentum nisi a molestie bibendum. </p>
+            <p><a href="#" class="text-uppercase text-center blue-btn blue-round size-14 mt-4 d-inline-block ang-menu">Read more</a></p>
+          </div>
+        </div> -->
+
+      </div>
+
+      </ng-template>
+
+    </div>
+</section>

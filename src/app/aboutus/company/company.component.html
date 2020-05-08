@@ -1,0 +1,12 @@
+<div class="container wrap-breadcrumb">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">The Company</li>
+      </ol>
+  </nav>
+</div>
+<div *ngIf="company" [innerHTML]="company"></div>
+
+<app-know-more [hideOption]="typeKnowMore"> </app-know-more>
+<app-request-demo> </app-request-demo>

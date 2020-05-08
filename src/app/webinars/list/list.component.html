@@ -1,0 +1,162 @@
+
+<div class="container wrap-breadcrumb">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Events & Webinar</li>
+      </ol>
+  </nav>
+</div>
+<!-- Start Second level Banner -->
+<section class="second-level-banner mb-md-5">
+    <div class="img-wrap position-relative">
+        <img src="assets/images/news-event/banner2.jpg" alt="Merino Webinar" class="w-100">
+    </div>
+</section>
+
+
+
+    <div class="container py-5" id="PastWebinar" *ngIf="upcomingWebinar && upcomingWebinar.length">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="common-heading lightRed">Upcoming Webinar</h3>
+          <span class="heading-bottom-line redBg mb-3 move-right"></span>
+        </div>
+      </div>
+
+      <div class="row" id="upcomingWebinarList">
+
+        <div class="col-md-6 my-4" *ngFor="let liveWeb of upcomingWebinar">
+          <div class="upcoming-webinar-section">
+            <h4 class="m-0 size-20 mb-3 font-500 text-capitalize">{{  liveWeb.title }}</h4>
+            <h5 class="mb-1" *ngIf="liveWeb.services && liveWeb.services.length" >
+              Service:
+              <span class="font-400" *ngFor="let liveService of liveWeb.services;let last = last">{{  liveService.name }}<span *ngIf="!last">, </span> </span>
+             </h5>
+             <h5 class="mb-1" *ngIf="liveWeb.softwares && liveWeb.softwares.length" >
+                Software:
+                <span class="font-400" *ngFor="let liveSoftwares of liveWeb.softwares; let last=last">{{  liveSoftwares.name }}<span *ngIf="!last">, </span></span></h5>
+               <h5 class="mb-1" *ngIf="liveWeb.industries && liveWeb.industries.length" >
+                  Industries:
+                  <span class="font-400" *ngFor="let liveIndustries of liveWeb.industries; let last=last">{{  liveIndustries.name }}<span *ngIf="!last">, </span></span></h5>
+            <div class="row my-4">
+              <div class="col-auto">
+                <p class="font-400 size-16 d-flex align-items-center justify-content-around m-0"><i class="fas fa-calendar-alt blue mr-2"></i>  {{ liveWeb.date | date:'dd MMMM, yyyy'}}</p>
+              </div>
+              <div class="col-auto">
+                <p class="font-400 size-16 d-flex align-items-center justify-content-around m-0"><i class="far fa-clock blue mr-2"></i>{{  liveWeb.time }} - {{  liveWeb.endtime }} {{  liveWeb.timezone }}</p>
+              </div>
+            </div>
+
+            <p class="font-400 mb-4">{{  liveWeb.description }}</p>
+
+            <div *ngIf="liveWeb.speakers && liveWeb.speakers.length">
+            <p><strong class="font-600 size-18">Speakers:</strong></p>
+            <ul class="m-0 p-0 d-flex w-100">
+              <li class="mr-4" *ngFor="let liveSpeakers of liveWeb.speakers">
+              <img class="mr-2 speaker-img border" *ngIf="liveSpeakers.image" src="{{ serverUrl}}webinar/speaker/{{ liveSpeakers.image }}" alt="">
+              <img class="mr-2 speaker-img border" *ngIf="!liveSpeakers.image" src="{{ serverUrl}}webinar/speaker/no-img.jpg" alt="">
+              <p class="font-400 m-0 size-16"><strong class="font-500 size-18">{{ liveSpeakers.name }}</strong>
+                {{ liveSpeakers.designation }}</p>
+
+              </li>
+
+            </ul>
+          </div>
+
+            <a *ngIf="countrySlug" [routerLink]="['/',countrySlug,'webinar', liveWeb.slug]"  class="text-uppercase text-center blue-btn blue-round size-14 mt-4 d-inline-block ang-menu">
+              Register Now <i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+
+
+              <a *ngIf="!countrySlug" [routerLink]="['/','webinar', liveWeb.slug]"  class="text-uppercase text-center blue-btn blue-round size-14 mt-4 d-inline-block ang-menu">
+                Register Now <i class="fas fa-long-arrow-alt-right ml-2 mt-1"></i></a>
+
+
+
+          </div>
+        </div>
+
+
+
+
+        <!-- more -->
+
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+    <div id="pastWebinarSection" class="pt-5 pb-3" *ngIf="pastWebinar && pastWebinar.length">
+      <div class="container" id="PastWebinar">
+
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="common-heading white">Past <span class="white">Webinar</span></h3>
+            <span class="heading-bottom-line whiteBg mb-3 move-right"></span>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6 my-4" *ngFor="let liveWeb of pastWebinar">
+            <div class="upcoming-webinar-section">
+              <h4 class="m-0 size-20 mb-3 font-500 text-capitalize">{{  liveWeb.title }} </h4>
+
+              <h5 class="my-3" *ngIf="liveWeb.services && liveWeb.services.length">
+                  Service: <span *ngFor="let liveService of liveWeb.services;let last = last">{{  liveService.name }}
+                   <span *ngIf="!last">,</span>
+                   </span>
+                 </h5>
+
+                 <h5 class="my-3" *ngIf="liveWeb.softwares && liveWeb.softwares.length">
+                 Software: <span *ngFor="let liveSoftwares of liveWeb.softwares; let last=last">{{  liveSoftwares.name }}
+                     <span *ngIf="!last">,</span>
+                 </span></h5>
+                 <h5 class="my-3" *ngIf="liveWeb.industries && liveWeb.industries.length">
+                   Industries: <span *ngFor="let liveIndustries of liveWeb.industries; let last=last">{{  liveIndustries.name }}<span *ngIf="!last">,</span></span></h5>
+
+              <div class="row mb-4">
+                <div class="col-auto">
+                  <p class="font-400 size-16 d-flex align-items-center justify-content-around m-0"><img
+                      src="assets/images/news-event/calendar.png" alt="" class="mr-2">   {{ liveWeb.date | date:'dd MMMM, yyyy'}}</p>
+                </div>
+              </div>
+
+              <div *ngIf="liveWeb.speakers && liveWeb.speakers.length">
+              <p><strong class="font-600 size-18">Speakers:</strong></p>
+              <ul class="m-0 p-0 d-flex w-100">
+
+
+                <li class="mr-4" *ngFor="let liveSpeakers of liveWeb.speakers">
+                    <img class="mr-2 speaker-img border"
+                       *ngIf="liveSpeakers.image" src="{{ serverUrl}}webinar/speaker/{{ liveSpeakers.image }}" alt="">
+                    <img class="mr-2 speaker-img border" *ngIf="!liveSpeakers.image" src="{{ serverUrl}}webinar/speaker/no-img.jpg" alt="">
+                            <p class="font-400 m-0 size-16"><strong class="font-600 size-18">{{ liveSpeakers.name }}</strong>
+                              {{ liveSpeakers.designation }}</p>
+                          </li>
+
+              </ul>
+            </div>
+
+
+
+              <a *ngIf="liveWeb.video" (click)="updatewebid(liveWeb._id, liveWeb.video)" href="javascript:void(0)" [routerLink]="['/','webinar','past', liveWeb.slug]" class="text-uppercase text-center red-btn size-14 mt-4 d-inline-block" data-toggle="modal" data-target="#exampleModal"><i class="fab fa-youtube ml-2 mt-1"></i> Watch Webinar </a>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <app-request-demo> </app-request-demo>
+   
+   <app-watchvideo *ngIf="showchild" [pastwebid]="webid" [pastvideo]="webvideo"> </app-watchvideo>
+

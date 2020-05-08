@@ -1,0 +1,205 @@
+<div class="container wrap-breadcrumb">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item">
+            <a *ngIf="countrySlug"  [routerLink]="['/',countrySlug,'/','webinar','list.html']">Webinars</a>
+            <a *ngIf="!countrySlug" [routerLink]="['/webinar','list.html']">Webinars</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">{{ detail?.title }}</li>
+      </ol>
+  </nav>
+</div>
+
+<!-- Start Second level Banner -->
+<section class="second-level-banner pb-4 mb-5">
+    <div class="img-wrap position-relative">
+        <img src="assets/images/news-event/banner1.jpg" alt="Merino Industries" class="w-100">
+
+    </div>
+</section>
+
+<!-- End Second level Banner -->
+
+<div class="container pb-4 mb-4" id="PastWebinar" *ngIf="detail?.services && detail?.services.length">
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="">
+                <p class="blue mb-2 font-400">Upcoming Webinar</p> 
+                <h4 class="m-0 size-20 mb-3 font-500 text-capitalize">{{  detail?.title }}</h4>
+
+                <h5 class="mb-1" *ngIf="detail?.services && detail?.services.length">
+                    Service:
+                    <span class="font-400" *ngFor="let liveService of detail.services;let last = last">{{  liveService.name }}<span class="font-400" *ngIf="!last">, </span> </span>
+                </h5>
+
+                <h5 class="mb-1" *ngIf="detail?.softwares && detail?.softwares.length">
+                    Softwares:
+                    <span class="font-400" *ngFor="let liveService of detail.softwares;let last = last">{{  liveService.name }}<span class="font-400" *ngIf="!last">, </span> </span>
+                </h5>
+
+                <h5 class="mb-1" *ngIf="detail?.industries && detail?.industries.length">
+                    Industries:
+                    <span class="font-400" *ngFor="let liveService of detail.industries;let last = last">{{  liveService.name }}<span class="font-400" *ngIf="!last">, </span> </span>
+                </h5>
+
+
+
+                <div class="row my-4">
+                    <div class="col-auto">
+                        <p class="font-400 size-16 d-flex align-items-center justify-content-around m-0"><img
+                                src="assets/images/news-event/calendar.png" alt=""
+                                class="mr-2 border">{{ detail?.date | date:'dd MMMM,yyyy'}}</p>
+                    </div>
+                    <div class="col-auto">
+                        <p class="font-400 size-16 d-flex align-items-center justify-content-around m-0"><img
+                                src="assets/images/news-event/clock-icon.png" alt="" class="mr-2 border">{{  detail?.time }}
+                            {{  detail?.timezone.abbr }}</p>
+                    </div>
+                </div>
+
+                <p class="font-400 mb-4">{{  detail?.description }}</p>
+
+
+                <div *ngIf="detail?.speakers && detail?.speakers.length">
+                    <p><strong class="font-600 size-18">Speakers:</strong></p>
+                    <ul class="m-0 p-0 d-flex w-100 mb-5">
+                        <li class="mr-4" *ngFor="let liveSpeakers of detail.speakers">
+
+                            <img class="mr-3 speaker-img border" *ngIf="liveSpeakers.image"
+                                src="{{ serverUrl}}webinar/speaker/{{ liveSpeakers.image }}" alt="">
+                            <img class="mr-3 speaker-img border" *ngIf="!liveSpeakers.image"
+                                src="{{ serverUrl}}webinar/speaker/no-img.jpg" alt="">
+                            <p class="font-400 m-0 size-16"><strong
+                                    class="font-500 size-18">{{ liveSpeakers.name }}</strong>
+                                {{ liveSpeakers.designation }}</p>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="web-video position-relative">
+                <iframe class="w-100" height="315" [src]='sanitizer.bypassSecurityTrustResourceUrl(detail.video)' frameborder="0"
+            allowfullscreen  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <span class="blur-overlay watch-video"></span>
+            </div>
+        </div>
+
+
+        <div class="col-md-5 mt-5 mt-md-0">
+
+            <div class="align-items-center d-flex h-100" *ngIf="hideform==true">
+                <span  class="green-alert">Registration successful! You can watch the video now </span>
+            </div>
+
+            <div class="form-container p-3 p-lg-4" *ngIf="hideform==false">
+                <h2 class="text-center mt-0 mb-4">Register Now</h2>
+                <form [formGroup]="webinarRegisterForm" (ngSubmit)="onSubmit()" >
+
+                    <input type="hidden" formControlName="webinar_id" [ngModel]="detail?._id">
+
+                    <div class="form-group">
+                        <input type="text" formControlName="firstName"
+                            [ngClass]="{ 'is-invalid': (submitted || f.firstName.touched ) && f.firstName.errors }"
+                            class="form-control" placeholder="First Name">
+
+                        <!-- <span *ngIf="(submitted || f.firstName.touched) && f.firstName.errors" class="invalid-feedback">
+                            <span *ngIf="f.firstName.errors.required">First Name is required</span>
+                        </span> -->
+
+                        <!-- <span *ngIf="f.firstName.touched && f.firstName.errors" class="invalid-feedback">
+                                <span *ngIf="f.firstName.errors.required">First Name is required</span>
+                            </span> -->
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name">
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="company"
+                            [ngClass]="{ 'is-invalid':  (submitted || f.company.touched ) && f.company.errors }"
+                            class="form-control" placeholder="Company Name">
+                        <!-- <span *ngIf="(submitted || f.company.touched) && f.company.errors" class="invalid-feedback">
+                            <span *ngIf="f.company.errors.required">Comany Name is required</span>
+                        </span> -->
+                    </div>
+                    <div class="form-group">
+                        <input type="email" formControlName="email"
+                            [ngClass]="{ 'is-invalid': (submitted || f.email.touched )  && f.email.errors }"
+                            class="form-control" placeholder="Email">
+                        <!-- <span *ngIf="(submitted || f.email.touched) && f.email.errors" class="invalid-feedback">
+                            <span *ngIf="f.email.errors.required">Email is required</span>
+                            <span *ngIf="f.email.errors.email">Email must be a valid email address</span>
+                        </span> -->
+                    </div>
+
+                    <div class="form-group">
+                        <select formControlName="country" class="form-control"
+                            [ngClass]="{ 'is-invalid': (submitted || f.country.touched ) && f.country.errors }">
+                            <option value="" disabled>Select Country</option>
+                            <option *ngFor="let countryVal of countries" [ngValue]="countryVal._id">
+                                {{  countryVal.name }}</option>
+                        </select>
+                        <!-- <span *ngIf="(submitted || f.country.touched) && f.country.errors" class="invalid-feedback">
+                            <span *ngIf="f.country.errors.required">Country Name is required</span>
+                        </span> -->
+                    </div>
+                    <div class="form-group">
+                        <input type="number" min="0"  formControlName="contact" (keypress)="contactkeypress($event)"
+                            [ngClass]="{ 'is-invalid': (submitted || f.contact.touched ) && f.contact.errors }"
+                            class="form-control contactv" placeholder="Contact No.">
+                        <!-- <span *ngIf="(submitted || f.contact.touched )  && f.contact.errors" class="invalid-feedback">
+                            <span *ngIf="f.contact.errors.required">Contact Number is required</span>
+                        </span> -->
+                    </div>
+
+
+
+
+
+                    <input type="hidden" formControlName="validCaptcha">
+
+
+                    <div class="form-group position-relative wrap-captcha">
+                        <input type="text" class="form-control" placeholder="Enter captcha here"
+                        formControlName="captcha"
+                        [ngClass]="{ 'is-invalid': (submitted || f.captcha.touched ) && f.captcha.errors }">
+
+                        <span class="captcha-text">{{ captcha }}</span>
+                        <a role="button" (click)="refCaptcha()" title="Refresh Captcha"><i class="fas fa-sync"></i></a>
+
+                    </div>
+
+                    <div class="form-group">
+                        <p class="size-12">We are strongly committed to protecting the privacy of personal data
+                            which safe-guards our valuable clients, employees and other individuals. In preparation for
+                            EU's General Data Protection Regulation (GDPR) that being now enforced; we would like to
+                            verify that you are happy to continue receiving sales and marketing communication emails
+                            from the our network. By giving your consent, you will then receive relevant sales and
+                            marketing communications emails, publications, industry newsletters and invitations from us.
+                            You are also being provided with an opportunity to Opt-Out of receiving communications from
+                            us within this email. Please read our <a [routerLink]="['/','privacy-policy.html']">“Privacy Notice”</a>
+                            that provides further information about how we use, care and protect your personal data.
+                        </p>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" required="required" formControlName="confirm" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.confirm.errors }" class="form-check-input"
+                            id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Yes I Confirm</label>
+                    </div>
+
+                    <div class="form-group g-recaptcha" data-sitekey="6LcxJ20UAAAAADk7NpEVOmcqCerLBXV1O3XLjtfG">
+                    </div>
+                    <button type="submit"
+                        class="form-submit blue-btn blue-round px-4 py-2 text-uppercase size-16">Submit</button>
+                    <!-- <small class="form-text lightRed">* fields are mandatory.</small> -->
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<app-request-demo> </app-request-demo>

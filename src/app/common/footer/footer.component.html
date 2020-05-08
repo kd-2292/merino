@@ -1,0 +1,140 @@
+<footer class="pt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h4 class="mt-3 mb-2 mt-md-0">Services <i class="fas fa-plus"></i> <i class="fas fa-minus"></i></h4>
+                <ul>
+
+                    <li *ngFor="let serviceMenuVal of serviceMenu">
+                        <a *ngIf="countrySlug" [routerLink]="['/',countrySlug,'services',serviceMenuVal.slug ]">
+                            {{ serviceMenuVal.name }} </a>
+                        <a *ngIf="!countrySlug" [routerLink]="['/','services',serviceMenuVal.slug ]">
+                            {{ serviceMenuVal.name }} </a>
+
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4 class="mt-3 mb-2 mt-md-0">Software <i class="fas fa-plus"></i> <i class="fas fa-minus"></i></h4>
+                <ul>
+                    <li *ngFor="let softwareMenuVal of softwareMenu">
+                        <a *ngIf="countrySlug" [routerLink]="['/',countrySlug,'applications',softwareMenuVal.slug ]">
+                            {{  softwareMenuVal.name }} </a>
+                        <a *ngIf="!countrySlug" [routerLink]="['/','applications',softwareMenuVal.slug ]">
+                            {{  softwareMenuVal.name }} </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4 class="mt-3 mb-2 mt-md-0">Industries <i class="fas fa-plus"></i> <i class="fas fa-minus"></i></h4>
+                <ul>
+
+                    <li *ngFor="let industryMenuVal of industryMenu">
+
+                        <a *ngIf="countrySlug" [routerLink]="['/',countrySlug,'industries',industryMenuVal.slug ]">
+                            {{ industryMenuVal.name }} </a>
+                        <a *ngIf="!countrySlug" [routerLink]="['/','industries',industryMenuVal.slug ]">
+                            {{ industryMenuVal.name }} </a>
+
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4 class="mt-3 mb-2 mt-md-0">Quick Links <i class="fas fa-plus"></i> <i class="fas fa-minus"></i></h4>
+                <ul>
+                    <li><a [routerLink]="['/about-us.html']">About Us</a></li>
+                    <li><a [routerLink]="['/careers.html']">Careers</a></li>
+                    <li><a [routerLink]="['/resources/casestudy.html']">Case Studies</a></li>
+                    <li><a [routerLink]="['/contact-us.html']">Contact Us</a></li>
+                    <li><a [routerLink]="['/webinar/list.html']">Events & Webinar</a></li>
+                </ul>
+                <h4 class="mt-3">Connect with Us</h4>
+                <ul class="social-links">
+                    <li><a href="https://www.facebook.com/merinoservices" target="_blank" rel="nofollow"><i
+                                class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://twitter.com/MerinoServices" target="_blank" rel="nofollow"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li><a href="https://www.linkedin.com/company/merino-consulting-services-inc?trk=top_nav_home"
+                            target="_blank" rel="nofollow"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="https://www.slideshare.net/MerinoService" target="_blank" rel="nofollow"><i
+                                class="fab fa-slideshare"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container footer-links">
+        <div class="row">
+            <div class="col-md-4 d-flex justify-content-center flex-column">
+                <ul>
+                    <li><a [routerLink]="['/sitemap.html']">Site Map</a></li>
+                    <!-- <li><a href="javascript:void(0)">Disclaimer</a></li> -->
+                    <li><a [routerLink]="['/privacy-policy.html']">Privacy Policy</a></li>
+                </ul>
+                <span class="copy-right">&copy;2020 Merino Services Ltd. All Rights Reserved.</span>
+            </div>
+            <div class="col-md-5 my-3 my-sm-0 d-flex align-items-center justify-content-center">
+                <a href="https://www.finessse.digital/" rel="nofollow" target="_blank"><img src="assets/images/Home/finessse-logo.png"
+                        alt="Finessse Digital"></a>
+            </div>
+            <div class="col-md-3 pt-0">
+                <h4>Visit Merino Group Sites</h4>
+                <p class="d-flex justify-content-center flex-column">
+                    <a href="https://www.merinoindia.com/" target="_blank" rel="nofollow">www.merinoindia.com</a>
+                    <a href="http://www.vegit-merino.com/" target="_blank" rel="nofollow">www.vegit-merino.com</a>
+                    <a href="http://www.merinolaminates.com/" target="_blank" rel="nofollow">www.merinolaminates.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<ngx-spinner></ngx-spinner>
+<!--
+<div class="loader"><i class="fas fa-spinner fa-spin"></i></div> -->
+
+
+<section class="requestCallBtn text-center py-2"><i class="fas fa-phone-volume"></i></section>
+
+<section id="requestCallBack">
+        <h2 class="text-center size-16 text-uppercase p-2 white m-0">Request Call Back</h2>
+
+          <p *ngIf="thanyouMessage==true" class="green-alert mb-0 p-2 size-12">Thanks for submitting your details. We will get back to you shortly</p>
+
+
+            <form [formGroup]="requestCallForm" (ngSubmit)="onCallSubmit()"  #formDirective="ngForm"  class="p-3" *ngIf="thanyouMessage==false">
+
+            <input type="text" formControlName="name"
+            [ngClass]="{ 'is-invalid': (submitted || f.name.touched ) && f.name.errors }"
+            class="form-control w-100 mb-3" required="required" placeholder="Name">
+
+            <input type="number" min="0" required="required" class="form-control w-100 mb-3"  maxlength="15" placeholder="Contact No." formControlName="contact"
+            (keypress)="contactkeypress($event)"
+            [ngClass]="{ 'is-invalid': (submitted || f.contact.touched ) && f.contact.errors }">
+
+            <div class="form-group">
+                        <p class="size-12 gdpr-height">We are strongly committed to protecting the privacy of personal data
+                            which safe-guards our valuable clients, employees and other individuals. In preparation for
+                            EU's General Data Protection Regulation (GDPR) that being now enforced; we would like to
+                            verify that you are happy to continue receiving sales and marketing communication emails
+                            from the our network. By giving your consent, you will then receive relevant sales and
+                            marketing communications emails, publications, industry newsletters and invitations from us.
+                            You are also being provided with an opportunity to Opt-Out of receiving communications from
+                            us within this email. Please read our <a target="_blank" [routerLink]="['/','privacy-policy.html']">“Privacy Notice”</a>
+                            that provides further information about how we use, care and protect your personal data.
+                        </p>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input type="checkbox" required="required" formControlName="confirm" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.confirm.errors }" class="form-check-input"
+                            id="exampleCheck1">
+                        <label class="form-check-label size-14" for="exampleCheck1">Yes I Confirm</label>
+                    </div>
+
+
+            <button type="submit" class="text-uppercase red-btn px-3 py-1 size-16">Submit</button>
+        </form>
+        <div class="close-form"><i class="fas fa-arrow-right"></i></div>
+</section>

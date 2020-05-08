@@ -1,0 +1,195 @@
+
+
+
+<section class="requestCallBtn text-center py-2"><i class="fas fa-phone-volume"></i></section>
+
+<header class="py-2 py-md-3">
+    <div class="merino-loader">
+        <i class="fas fa-spinner fa-spin"></i>
+    </div>
+    <div class="container">
+        <div class="col-md-12 d-flex justify-content-between">
+            <div class="logo">
+                <a href="/"><img src="assets/images/Home/logo.svg" alt="merino"></a>
+            </div>
+            <div class="wrap-nav-with-search">
+            	<a href="assets/htdocs/iso-certificate.pdf" target="_blank" class="iso-certified">An ISO 9001:2015   Certified Company</a>
+                <div class="wrap-search d-flex">
+                    <form #searchForm='ngForm' (ngSubmit)="MerinoSearch(searchForm)" >
+                        <input type="text" name="search" class="form-control" placeholder="Search" ngModel>
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                    <span class="search-icon">
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-times"></i>
+                    </span>
+                </div>
+                <div class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </div>
+            </div>
+            <ul class="hambergar-menu">
+ <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/']">Home</a></li>
+                <li class="sub-menu"><a href="javascript:void(0)">Services <i class="fas fa-angle-right"></i></a>
+                    <ul class="level-1">
+                        <span class="back-menu-btn"><i class="fas fa-long-arrow-alt-left mr-2"></i> back</span>
+                        <h5>Services</h5>
+
+                        <li *ngFor="let serviceMenuVal of serviceMenu">
+
+
+                            <a *ngIf="serviceMenuVal.slug !='services.html' && countrySlug " class="ang-menu"
+                            [routerLink]="['/',countrySlug,'services',serviceMenuVal.slug ]">
+                        {{ serviceMenuVal.name }} </a>
+
+                        <a *ngIf="serviceMenuVal.slug !='services.html' && !countrySlug" class="ang-menu"
+                        [routerLink]="['/','services',serviceMenuVal.slug ]"> {{ serviceMenuVal.name }} </a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+            <li class="sub-menu"><a href="javascript:void(0)">Software <i class="fas fa-angle-right"></i></a>
+                <ul class="level-1">
+                    <span class="back-menu-btn"><i class="fas fa-long-arrow-alt-left mr-2"></i> back</span>
+                    <h5>Software</h5>
+
+
+        <!-- <li>
+            <a class="ang-menu"
+                         [routerLink]="['/','applications','enterprise-performance-management2.html']"> XYZZZ
+                     </a>
+                 </li> -->
+
+                 <li *ngFor="let softwareMenuVal of softwareMenu">
+
+                    <a *ngIf="softwareMenuVal.slug !='software.html' && countrySlug" class="ang-menu"
+                    [routerLink]="['/',countrySlug,'applications',softwareMenuVal.slug ]">
+                {{ softwareMenuVal.name }} </a>
+
+                <a *ngIf="softwareMenuVal.slug !='software.html' && !countrySlug" class="ang-menu"
+                [routerLink]="['/','applications',softwareMenuVal.slug ]"> {{ softwareMenuVal.name }}
+            </a>
+
+
+        </li>
+
+
+
+    </ul>
+</li>
+<li class="sub-menu"><a href="javascript:void(0)">Industries <i class="fas fa-angle-right"></i></a>
+    <ul class="level-1">
+        <span class="back-menu-btn"><i class="fas fa-long-arrow-alt-left mr-2"></i> back</span>
+        <h5>Industries</h5>
+
+        <li *ngFor="let industryMenuVal of industryMenu">
+            <a class="ang-menu" *ngIf="industryMenuVal.slug !='industries.html' && countrySlug"
+            [routerLink]="['/',countrySlug,'industries',industryMenuVal.slug ]">
+        {{ industryMenuVal.name }} </a>
+
+
+        <a class="ang-menu" *ngIf="industryMenuVal.slug !='industries.html' && !countrySlug"
+        [routerLink]="['/','industries',industryMenuVal.slug ]"> {{ industryMenuVal.name }} </a>
+
+
+    </li>
+
+</ul>
+</li>
+
+
+<li *ngIf="countrySlug"><a class="ang-menu" [routerLink]="['/',countrySlug,'/','webinar','list.html']">Events & Webinar</a></li>
+
+<li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/webinar','list.html']">Events & Webinar</a></li>
+
+
+
+
+
+
+    <li class="sub-menu"><a href="javascript:void(0)">Resources<i class="fas fa-angle-right"></i></a>
+        <ul class="level-1">
+            <span class="back-menu-btn"><i class="fas fa-long-arrow-alt-left mr-2"></i> back</span>
+            <h5>Resources</h5>
+
+            <li *ngIf="countrySlug"><a class="ang-menu" [routerLink]="['/resources',countrySlug,'casestudy.html']">Case Studies</a> </li>
+            <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/resources/casestudy.html']">Case Studies</a> </li>
+
+
+            <li *ngIf="countrySlug"><a class="ang-menu" [routerLink]="['/resources',countrySlug,'casestudy.html']"  fragment="whitePaper">White Papers </a> </li>
+
+            <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/resources/casestudy.html']"  fragment="whitePaper">White Papers </a> </li>
+
+            <!-- <li><a href="/global/india/resources/casestudy.html#whitePaper">White Papers</a></li> -->
+
+            <li *ngIf="countrySlug"><a class="ang-menu" [routerLink]="['/resources',countrySlug,'brochure.html']">Brochures </a></li>
+
+            <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/resources/brochure.html']">Brochures</a> </li>
+
+
+
+            <li *ngIf="countrySlug"><a class="ang-menu" [routerLink]="['/resources',countrySlug,'presentations.html']"  >Presentations </a> </li>
+
+            <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/resources/presentations.html']"  >Presentations</a> </li>
+
+
+        </ul>
+    </li>
+
+   <!--  <li *ngIf="countrySlug"><a class="ang-menu" [routerLink]="[countrySlug,'client.html']">Clients </a> </li> -->
+
+   <!--  <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/client.html']">Clients</a> </li> -->
+
+
+    <li class="sub-menu"><a href="javascript:void(0)">About Us <i class="fas fa-angle-right"></i></a>
+        <ul class="level-1">
+            <span class="back-menu-btn"><i class="fas fa-long-arrow-alt-left mr-2"></i> back</span>
+            <h5>About Us</h5>
+
+            <li *ngIf="countrySlug"><a class="ang-menu"  [routerLink]="[countrySlug,'about-us.html']" fragment="merino-group" >Merino Group</a></li>
+
+            <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/about-us.html']" fragment="merino-group" >Merino Group</a></li>
+
+
+            <li *ngIf="countrySlug"><a class="ang-menu"  [routerLink]="[countrySlug,'about-us.html']" >The Company</a></li>
+            <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/about-us.html']" >The Company</a></li>
+
+            <li *ngIf="countrySlug"><a class="ang-menu"  [routerLink]="[countrySlug,'director-message.html']">Director's Message</a></li>
+            <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/director-message.html']">Director's Message</a></li>
+
+
+            <li *ngIf="countrySlug"><a class="ang-menu"  [routerLink]="[countrySlug,'director-message.html']" fragment="management-team-container" >Management</a></li>
+            <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/director-message.html']" fragment="management-team-container" >Management</a></li>
+
+            <li *ngIf="countrySlug"><a class="ang-menu" [routerLink]="[countrySlug,'global-presence.html']" fragment="globalContainer">Global Presence</a></li>
+            <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/global-presence.html']" fragment="globalContainer" >Global Presence</a></li>
+
+            <li *ngIf="countrySlug"><a  class="ang-menu" [routerLink]="[countrySlug,'global-presence.html']" >Vision & Mission</a></li>
+            <li *ngIf="!countrySlug"><a  class="ang-menu" [routerLink]="['/global-presence.html']"  >Vision & Mission</a></li>
+
+
+            <li *ngIf="countrySlug"><a  class="ang-menu" [routerLink]="[countrySlug,'careers.html']" >Careers</a></li>
+            <li *ngIf="!countrySlug"><a  class="ang-menu" [routerLink]="['/careers.html']"  >Careers</a></li>
+
+
+
+            <li *ngIf="countrySlug"><a class="ang-menu" [routerLink]="[countrySlug,'alliances.html']">Alliances</a></li>
+            <li *ngIf="!countrySlug"><a class="ang-menu"  [routerLink]="['/alliances.html']">Alliances</a></li>
+        </ul>
+
+    </li>
+
+    <li *ngIf="countrySlug"><a class="ang-menu" [routerLink]="[countrySlug,'contact-us.html']">Contact Us</a></li>
+    <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/contact-us.html']">Contact Us</a></li>
+    <li *ngIf="!countrySlug"><a class="ang-menu" [routerLink]="['/blog.html']">Blog</a></li>
+
+
+
+
+</ul>
+</div>
+</div>
+</header>
+<!-- End Header -->
